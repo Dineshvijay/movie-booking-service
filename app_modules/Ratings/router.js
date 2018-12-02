@@ -4,4 +4,4 @@ const ratingController = require('./controller');
 
 router.post('/add', ratingController.addRating)
 
-module.exports = routers;
+module.exports = router;
