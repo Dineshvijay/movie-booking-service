@@ -5,6 +5,7 @@ const error = require('./Middleware/error');
 const movies = require('./app_modules/Movies/router');
 const genre = require('./app_modules/Genres/router');
 const rating = require('./app_modules/Ratings/router');
+const theater = require('./app_modules/Theaters/router');
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use('/api/v1/movies', movies);
 app.use('/api/v1/genre', genre);
 app.use('/api/v1/rating', rating);
+app.use('api/v1/theater', theater)
 
 //Invalid Router handler
 app.use('*', (req, res) => {
