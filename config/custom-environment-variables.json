@@ -1,0 +1,3 @@
+{
+    "jwtSecretKey": "movie_booking_jwt_key"
+}

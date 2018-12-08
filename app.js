@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express()
+const config = require('config');
 const mongoose = require('mongoose');
 const error = require('./Middleware/error');
 const user = require('./app_modules/Users/router');
@@ -8,7 +9,14 @@ const genre = require('./app_modules/Genres/router');
 const rating = require('./app_modules/Ratings/router');
 const theater = require('./app_modules/Theaters/router');
 const actor = require('./app_modules/Actors/router');
+const { errorJSON } = require('./Utils/response');
 const PORT = process.env.PORT || 3000;
+
+//configuration
+if (!config.get('jwtSecretKey')){
+    console.error("FATAL ERROR: JwtSecretkey is not set")
+    process.exit(1)
+}
 
 app.use(express.json());
 
@@ -22,7 +30,7 @@ app.use('/api/v1/theater', actor);
 
 //Invalid Router handler
 app.use('*', (req, res) => {
-    res.send("Invalid routes")
+    res.status(400).send(errorJSON('Invalid request path', 400))
 });
 //Middle function to handle errors
 app.use(error);

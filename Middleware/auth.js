@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const config = require('config');
 const { errorJSON } = require('../Utils/response');
 
 function auth(err, req, res, next) {
@@ -7,7 +8,7 @@ function auth(err, req, res, next) {
       return res.status(401).send(errorJSON('Invalid Token', 401))
   }
   try {
-    const decoded = jwt.verify(tokenString, 'secretKey')
+    const decoded = jwt.verify(tokenString, config.get('jwtSecretKey'))
     req.user = decoded
     next()
   } catch (ex) {
