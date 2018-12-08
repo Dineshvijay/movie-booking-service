@@ -1,2 +1,4 @@
 node_modules/
 playground/
+uncaughtException.log
+logFile.log

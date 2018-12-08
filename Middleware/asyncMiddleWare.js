@@ -7,3 +7,5 @@ module.exports = asyncMiddleWareHandler = (handler) => {
         }
     }
 }
+
+//alternative for this approach - npm package - express-async-errors
