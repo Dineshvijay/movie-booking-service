@@ -6,6 +6,7 @@ const genre = require('../app_modules/Genres/router');
 const rating = require('../app_modules/Ratings/router');
 const theater = require('../app_modules/Theaters/router');
 const actor = require('../app_modules/Actors/router');
+const tickets = require('../app_modules/Tickets/router');
 const { errorJSON } = require('../Utils/response');
 
 module.exports = function (app){
@@ -17,7 +18,7 @@ module.exports = function (app){
     app.use('/api/v1/rating', rating);
     app.use('/api/v1/theater', theater)
     app.use('/api/v1/theater', actor);
-
+    app.use('api/v1/tickets', tickets);
     //Invalid Router handler
     app.use('*', (req, res) => {
         res.status(400).send(errorJSON('Invalid request', 400))
