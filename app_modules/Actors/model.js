@@ -7,7 +7,8 @@ const schema = new mongoose.Schema({
     photo: String,
     dob: String,
     born: String,
-    about: String
+    about: String,
+    country: String
 })
 
 const Actor = mongoose.model('Actor', schema)
